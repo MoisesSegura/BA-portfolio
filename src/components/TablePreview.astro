@@ -1,0 +1,30 @@
+
+<div class="overflow-x-auto border rounded-lg shadow-sm mb-5">
+    <table id="preview-table" class="min-w-full table-auto text-sm text-left">
+      <thead class="bg-gray-100 text-gray-700"></thead>
+      <tbody></tbody>
+    </table>
+  
+    <script type="module">
+      async function cargarCSV() {
+        const response = await fetch('/data/dataStore.csv');
+        const texto = await response.text();
+        const filas = texto.trim().split('\n');
+        const encabezados = filas[0].split(',');
+  
+        const tbody = document.querySelector('#preview-table tbody');
+        const thead = document.querySelector('#preview-table thead');
+  
+        thead.innerHTML = '<tr>' + encabezados.map(col => `<th class="px-4 py-2 border">${col}</th>`).join('') + '</tr>';
+
+        for (let i = 1; i <= 5 && i < filas.length; i++) {
+          const columnas = filas[i].split(',');
+          const filaHTML = columnas.map(col => `<td class="px-2 py-1 border">${col}</td>`).join('');
+          tbody.innerHTML += `<tr>${filaHTML}</tr>`;
+        }
+      }
+  
+      cargarCSV();
+    </script>
+  </div>
+  

@@ -1,0 +1,56 @@
+---
+import "../styles/global.css";
+import Hero from "../components/Hero.astro";
+import TablePreview from '../components/TablePreview.astro';
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Portafolio BA</title>
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-sans">
+   
+    <Hero />
+    <section class="max-w-4xl mx-auto py-2 px-4">
+        <h1 class="font-bold text-2xl m-2">Data Preview</h1>
+        <TablePreview />
+
+        <h1 class="font-bold text-2xl m-2">Dashboard</h1>
+        <img src="/images/dashboard.webp" alt="Dashboard Power BI" loading="lazy" class="rounded-xl" />
+
+        <a href="https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset/data">dataset</a>
+    </section>
+
+    <section class="bg-white p-6 rounded-2xl shadow-md space-y-6 max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-800"> Insights </h2>
+    
+      <div class="space-y-2">
+        <p>1. El análisis muestra que la región del Oeste lidera las ventas con un total de $25,199 
+          seguida por la región Este. Sin embargo, la región Sur tiene el menor rendimiento, representando solo el 18% de las ventas totales. 
+          Se recomienda investigar qué factores están afectando la performance en el Sur 
+          (ofertas, distribución, comportamiento del cliente) para identificar posibles oportunidades de mejora.</p>
+      </div>
+
+      <div class="space-y-2">
+        <p>2. Se observa que la categoría de Tecnología tiene las mayores ventas y ganancias, lo cual indica una alta rentabilidad. 
+          Sin embargo, Muebles tiene buenas ventas, pero una rentabilidad muy baja o incluso negativa. 
+          Se recomienda revisar los costos asociados a esta categoría y considerar estrategias para optimizar su margen de ganancia</p>
+      </div>
+
+      <div class="space-y-2">
+        <p>3. El producto más rentable fue 'Canon ImageCLASS 2200', generando más de $25,000 en ganancias. 
+          En general, los productos tecnológicos dominan el Top 10, lo cual refuerza la importancia de esta categoría para la rentabilidad global del negocio. 
+          Se recomienda mantener el enfoque en estos productos.</p>
+      </div>
+
+      <div class="space-y-2">
+        <p>4. El segmento 'Consumer' representa la mayor parte de las ventas, seguido por 'Corporate'. 
+          Sin embargo, el segmento 'Home Office', aunque menor en volumen, muestra una buena relación ganancia/venta</p>
+      </div>
+    
+    
+    </section>
+    
+  </body>
+</html>

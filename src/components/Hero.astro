@@ -1,0 +1,35 @@
+---
+const currentPath = Astro.url.pathname;
+const getButtonClass = (path:string) =>
+  path === currentPath
+    ? 'bg-white shadow-inner translate-y-[2px] border border-gray-300'
+    : 'bg-white shadow-lg hover:shadow-xl transition';
+---
+
+<main class="max-w-4xl mx-auto py-16 px-4">
+  <h1 class="text-4xl font-bold mb-4">¡Hola! Soy Moises</h1>
+  <p class="mb-8">Bienvenido a mi portafolio como Business Analyst...</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <a href="/powerbi" class={`p-6 rounded-2xl ${getButtonClass('/powerbi')}`}>
+      <h2 class="text-xl font-semibold">Power BI</h2>
+      <p>Dashboards interactivos y visualización de datos.</p>
+    </a>
+
+    <a href="/sql" class={`p-6 rounded-2xl ${getButtonClass('/sql')}`}>
+      <h2 class="text-xl font-semibold">SQL</h2>
+      <p>Consultas, extracción y análisis desde bases de datos.</p>
+    </a>
+
+    <a href="/python" class={`p-6 rounded-2xl ${getButtonClass('/python')}`}>
+      <h2 class="text-xl font-semibold">Python</h2>
+      <p>Análisis de datos, pandas, visualizaciones.</p>
+    </a>
+
+    <a href="/diagramas" class={`p-6 rounded-2xl ${getButtonClass('/diagramas')}`}>
+      <h2 class="text-xl font-semibold">Diagramas</h2>
+      <p>Casos de uso, BPMN, modelado de procesos.</p>
+    </a>
+  </div>
+</main>
+
