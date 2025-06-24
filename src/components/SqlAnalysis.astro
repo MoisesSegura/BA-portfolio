@@ -1,0 +1,17 @@
+---
+const { title, question, sql, interpretation, image } = Astro.props;
+---
+
+<div class="py-6 border-b border-gray-200">
+  <h2 class="font-bold text-xl">{title}</h2>
+  <p class="text-gray-700 italic">{question}</p>
+  <pre class="mt-2"><code class="language-sql">{sql}</code></pre>
+
+  {image && (
+    <div class="my-4">
+      <img src={image} alt={`Resultado SQL para ${title}`} class="rounded shadow-md max-w-full" />
+    </div>
+  )}
+
+  <p class="py-4 text-gray-800">{interpretation}</p>
+</div>
