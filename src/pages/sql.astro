@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 import Hero from "../components/Hero.astro";
-import SqlAnalysis from "../components/sqlAnalysis.astro";
+import SqlBlock from "../components/SqlBlock.astro"
 ---
 
 <html lang="es">
@@ -19,13 +19,17 @@ import SqlAnalysis from "../components/sqlAnalysis.astro";
    <section class="max-w-4xl mx-auto py-1 px-4">
   <h2 class="text-3xl font-bold text-gray-800 py-2">Caso #1 H.H.R.R</h2>
 
+<p class="text-sm text-gray-600 mt-4">
+  Fuente del dataset: 
   <a href="https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset" 
-   target="_blank" 
-   class=" text-blue-700 font-medium py-4 px-2">
-   Ver Dataset en Kaggle
-</a>
+     target="_blank" 
+     class="text-blue-600 underline hover:text-blue-800">
+    IBM HR Analytics (Kaggle)
+  </a>
+</p>
 
-  <SqlAnalysis
+
+  <SqlBlock
     title="1. Departamentos con mayor rotación de empleados"
     question="¿Qué departamentos tienen mayor tasa de abandono?"
     sql={`SELECT Department,
@@ -39,7 +43,7 @@ import SqlAnalysis from "../components/sqlAnalysis.astro";
     interpretation="El departamento de Ventas tiene la mayor tasa de rotación con un 20%, seguido por Recursos Humanos. Esto podría indicar problemas en el ambiente laboral, liderazgo o carga de trabajo. Se recomienda realizar entrevistas de salida y revisar políticas internas en esas áreas."
   />
 
-  <SqlAnalysis
+  <SqlBlock
     title="2. ¿Hay relación entre años en el trabajo actual y rotación?"
     question="¿Los empleados que llevan poco tiempo son más propensos a irse?"
     sql={`SELECT YearsAtCompany,
@@ -53,7 +57,7 @@ ORDER BY YearsAtCompany;`}
     interpretation="Los empleados con menos de 2 años en la empresa presentan una tasa de rotación significativamente mayor. Esto sugiere que el onboarding o las expectativas del puesto no se están gestionando bien. Se recomienda mejorar los programas de incorporación, ofrecer mentoring a nuevos empleados y hacer seguimiento durante los primeros 6 meses."
   />
 
-  <SqlAnalysis
+  <SqlBlock
     title="3. Análisis de género y salario"
     question="¿Existe diferencia salarial entre hombres y mujeres?"
     sql={`SELECT Gender, 
@@ -65,7 +69,7 @@ GROUP BY Gender;`}
     interpretation="En contra de lo que suele observarse en la mayoría de las organizaciones, los resultados muestran que las mujeres tienen un ingreso promedio mensual ligeramente superior al de los hombres en este conjunto de datos (₡6,686 vs ₡6,380). Esto podría ser señal de una cultura organizacional fuerte en equidad de género."
   />
 
-  <SqlAnalysis
+  <SqlBlock
     title="4. Relación entre educación y salario"
     question="¿Los empleados con mayor nivel educativo ganan más?"
     sql={`SELECT Education, 
@@ -77,7 +81,7 @@ ORDER BY Education;`}
     interpretation="El patrón indica que la empresa reconoce y recompensa la formación académica con mejores condiciones salariales, especialmente en los niveles superiores (el salto entre nivel 4 y 5 es significativo).Sin embargo, las diferencias entre los niveles intermedios (2 a 4) son relativamente pequeñas, lo que podría hacer que algunos empleados con más estudios perciban que su esfuerzo adicional no está bien remunerado."
   />
 
-  <SqlAnalysis
+  <SqlBlock
     title="5. Jornada laboral y desgaste"
     question="¿Los empleados que trabajan más horas tienden a irse más?"
     sql={`SELECT OverTime, 

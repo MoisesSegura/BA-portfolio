@@ -1,0 +1,62 @@
+---
+// components/ZoomableImage.astro
+const { src, alt, caption, maxWidth = "100%" } = Astro.props;
+const uniqueId = alt.replace(/\s+/g, '-').toLowerCase();
+---
+
+<style>
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+  }
+
+  .overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+
+  .overlay.active {
+    display: flex;
+  }
+</style>
+
+<div class="my-4 text-center">
+  <img 
+    src={src} 
+    alt={alt} 
+    class="rounded-lg shadow cursor-zoom-in inline-block" 
+    data-overlay-id={`overlay-${uniqueId}`}
+    loading="lazy"
+    style={`max-width: ${maxWidth};`}
+  />
+  {caption && <p class="text-sm text-gray-600 mt-2 italic">{caption}</p>}
+
+  <div id={`overlay-${uniqueId}`} class="overlay">
+    <img src={src} alt={alt} />
+  </div>
+</div>
+
+<script type="module">
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.zoomable-image, img[data-overlay-id]').forEach(img => {
+      const overlayId = img.dataset.overlayId;
+      const overlay = document.getElementById(overlayId);
+
+      if (!overlay) return;
+
+      img.addEventListener("click", () => {
+        overlay.classList.add("active");
+      });
+
+      overlay.addEventListener("click", () => {
+        overlay.classList.remove("active");
+      });
+    });
+  });
+</script>
